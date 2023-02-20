@@ -2,10 +2,10 @@ FROM rockylinux:9
 LABEL maintainer="Dmitry Konovalov"
 ENV LANG=ru_RU.UTF-8
 ENV LC_ALL ru_RU.UTF-8
-RUN dnf -y update
-RUN dnf -y install wget nano mc php epel-release git wget curl 
-RUN dnf config-manager --enable crb
-RUN dnf group -y install "Development Tools" \
+RUN sudo dnf -y update
+RUN sudo dnf -y install wget nano mc php epel-release git wget curl 
+RUN sudo dnf config-manager --enable crb
+RUN sudo dnf group -y install "Development Tools" \
 && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz \
 && tar xvfz asterisk-20-current.tar.gz \
 && cd asterisk-20.0.0/ \
