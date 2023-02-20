@@ -1,4 +1,4 @@
-FROM rockylinux:latest
+FROM rockylinux:9
 LABEL maintainer="Dmitry Konovalov"
 ENV LANG=ru_RU.UTF-8
 ENV LC_ALL ru_RU.UTF-8
