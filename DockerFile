@@ -529,4 +529,6 @@ RUN menuselect/menuselect \
 --disable EXTRA-SOUNDS-FR-SIREN14 \
   menuselect.makeopts \
   && make -j$(nproc) 1> /dev/null \
-  && make -j$(nproc) install 1> /dev/null \
+  && make -j$(nproc) install 1> /dev/null
+USER root
+CMD /usr/sbin/asterisk -fvvvvv
