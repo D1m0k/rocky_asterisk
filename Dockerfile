@@ -5,11 +5,11 @@ RUN yum -y install wget nano mc php epel-release git wget glibc-langpack-ru
 ENV LANG=ru_RU.UTF-8
 ENV LC_ALL ru_RU.UTF-8
 # RUN localectl set-locale LANG=ru_RU.utf8
-RUN yum config-manager --enable crb 1> /dev/null
-RUN yum group -y install "Development Tools" 1> /dev/null
+RUN yum config-manager --enable crb
+RUN yum group -y install "Development Tools"
 RUN wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz
-RUN tar xvfz asterisk-20-current.tar.gz
-RUN cd asterisk-20.0.0/
+RUN tar xvfz asterisk-20-current.tar.gz -C asterisk
+RUN cd asterisk/
 RUN contrib/scripts/install_prereq install
 RUN ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
 RUN menuselect/menuselect \
