@@ -10,8 +10,11 @@ RUN yum group -y install "Development Tools"
 RUN cd /usr/src
 RUN git clone -b certified/18.9-cert4 --depth 1 https://github.com/asterisk/asterisk.git asterisk 
 RUN cd asterisk
-RUN contrib/scripts/install_prereq install
+RUN ls -l
+RUN sh contrib/scripts/install_prereq install
+RUN sh contrib/scripts/get_mp3_source.sh 
 RUN ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
+RUN make -j$(nproc) menuselect.makeopts
 RUN menuselect/menuselect \
 --disable chan_mobile \
 --disable chan_ooh323 \
