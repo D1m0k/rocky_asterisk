@@ -8,8 +8,9 @@ ENV LC_ALL ru_RU.UTF-8
 RUN yum config-manager --enable crb
 RUN yum group -y install "Development Tools"
 RUN wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz
-RUN tar xvf asterisk-20-current.tar.gz -C asterisk
-RUN cd asterisk/
+RUN mkdir asterisksrc
+RUN tar xvfz asterisk-20-current.tar.gz -C asterisksrc
+RUN cd asterisksrc/
 RUN contrib/scripts/install_prereq install
 RUN ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
 RUN menuselect/menuselect \
