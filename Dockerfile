@@ -2,10 +2,10 @@ FROM rockylinux:9
 LABEL maintainer="Dmitry Konovalov"
 ENV LANG=ru_RU.UTF-8
 ENV LC_ALL ru_RU.UTF-8
-RUN sudo yum -y update 1> /dev/null
-RUN sudo yum -y install wget nano mc php epel-release git wget curl 1> /dev/null
-RUN sudo yum config-manager --enable crb 1> /dev/null
-RUN sudo yum group -y install "Development Tools" 1> /dev/null \ 
+RUN yum -y update
+RUN yum -y install wget nano mc php epel-release git wget curl 1> /dev/null
+RUN yum config-manager --enable crb 1> /dev/null
+RUN yum group -y install "Development Tools" 1> /dev/null \ 
 && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz \
 && tar xvfz asterisk-20-current.tar.gz \
 && cd asterisk-20.0.0/ \
