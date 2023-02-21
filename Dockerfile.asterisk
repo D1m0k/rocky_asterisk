@@ -1,6 +1,4 @@
 FROM ghcr.io/d1m0k/rocky_asterisk/system:main
-RUN sh contrib/scripts/install_prereq install
-RUN sh contrib/scripts/get_mp3_source.sh 
 RUN ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
 RUN make -j$(nproc) menuselect.makeopts
 RUN menuselect/menuselect \
