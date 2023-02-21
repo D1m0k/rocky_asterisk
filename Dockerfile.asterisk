@@ -503,4 +503,6 @@ RUN menuselect/menuselect \
   && make -j$(nproc) 1> /dev/null \
   && make -j$(nproc) install 1> /dev/null
 USER root
+EXPOSE 5060-5061/udp 5060-5061/tcp
+EXPOSE 10000-10100/UDP
 CMD /usr/sbin/asterisk -fvvvvv
