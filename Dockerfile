@@ -1,9 +1,9 @@
 FROM rockylinux:9
 LABEL maintainer="Dmitry Konovalov"
+RUN yum -y update
+RUN yum -y install wget nano mc php epel-release git wget glibc-langpack-ru
 ENV LANG=ru_RU.UTF-8
 ENV LC_ALL ru_RU.UTF-8
-RUN yum -y update
-RUN yum -y install wget nano mc php epel-release git wget 1> /dev/null
 RUN yum config-manager --enable crb 1> /dev/null
 RUN yum group -y install "Development Tools" 1> /dev/null
 RUN wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz
