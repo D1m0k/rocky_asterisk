@@ -7,9 +7,9 @@ ENV LC_ALL ru_RU.UTF-8
 # RUN localectl set-locale LANG=ru_RU.utf8
 RUN yum config-manager --enable crb
 RUN yum group -y install "Development Tools"
-RUN cd /usr/src
+WORKDIR /usr/src
 RUN git clone -b certified/18.9-cert4 --depth 1 https://github.com/asterisk/asterisk.git asterisk 
-RUN cd asterisk
+WORKDIR /usr/src/asterisk
 RUN ls -l
 RUN sh contrib/scripts/install_prereq install
 RUN sh contrib/scripts/get_mp3_source.sh 
