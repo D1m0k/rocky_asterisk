@@ -4,12 +4,12 @@ RUN rm -f /etc/localtime \
 && ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
 && yum -y update \
 && yum -y install wget nano mc php epel-release git wget glibc-langpack-ru \
-&& yum clean all \
+&& dnf clean all \
 && LANG=ru_RU.UTF-8 \
 && LC_ALL ru_RU.UTF-8 \
 && yum config-manager --enable crb \
 && yum group -y install "Development Tools" \
-&& yum clean all
+&& dnf clean all
 WORKDIR /usr/src
 RUN git clone -b certified/18.9-cert4 --depth 1 https://github.com/asterisk/asterisk.git asterisk 
 WORKDIR /usr/src/asterisk
