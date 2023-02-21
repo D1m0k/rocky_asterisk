@@ -5,12 +5,12 @@ ENV LC_ALL ru_RU.UTF-8
 RUN yum -y update
 RUN yum -y install wget nano mc php epel-release git wget 1> /dev/null
 RUN yum config-manager --enable crb 1> /dev/null
-RUN yum group -y install "Development Tools" 1> /dev/null \ 
-&& wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz \
-&& tar xvfz asterisk-20-current.tar.gz \
-&& cd asterisk-20.0.0/ \
-&& contrib/scripts/install_prereq install \
-&& ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
+RUN yum group -y install "Development Tools" 1> /dev/null
+RUN wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz
+RUN tar xvfz asterisk-20-current.tar.gz
+RUN cd asterisk-20.0.0/
+RUN contrib/scripts/install_prereq install
+RUN ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
 RUN menuselect/menuselect \
 --disable chan_mobile \
 --disable chan_ooh323 \
