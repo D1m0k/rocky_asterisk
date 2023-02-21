@@ -1,16 +1,4 @@
-FROM rockylinux:9
-LABEL maintainer="Dmitry Konovalov"
-RUN yum -y update
-RUN yum -y install wget nano mc php epel-release git wget glibc-langpack-ru
-ENV LANG=ru_RU.UTF-8
-ENV LC_ALL ru_RU.UTF-8
-# RUN localectl set-locale LANG=ru_RU.utf8
-RUN yum config-manager --enable crb
-RUN yum group -y install "Development Tools"
-WORKDIR /usr/src
-RUN git clone -b certified/18.9-cert4 --depth 1 https://github.com/asterisk/asterisk.git asterisk 
-WORKDIR /usr/src/asterisk
-RUN ls -l
+FROM ghcr.io/d1m0k/rocky_asterisk/system:main
 RUN sh contrib/scripts/install_prereq install
 RUN sh contrib/scripts/get_mp3_source.sh 
 RUN ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
