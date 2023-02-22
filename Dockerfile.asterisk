@@ -504,6 +504,18 @@ RUN menuselect/menuselect \
   menuselect.makeopts \
   && make -j$(nproc) 1> /dev/null \
   && make -j$(nproc) install 1> /dev/null
+RUN echo $'[MariaDB]\n\
+Description=ODBC for MariaDB\n\
+Driver=/usr/lib/mariadb/libmaodbc.so\n\
+Setup=/usr/lib64/libodbcmyS.so\n\
+UsageCount=1\n' > /etc/odbcinst.ini \
+&& echo $'[asterisk-connector]\n\
+Description = MySQL connection to asterisk database\n\
+Driver = MariaDB\n\
+Database = asterisk\n\
+Server = localhost\n\
+Port = 3306\n' > /etc/odbc.ini
+
 USER root
 EXPOSE 5060-5061/udp 5060-5061/tcp
 EXPOSE 10000-10100/UDP
