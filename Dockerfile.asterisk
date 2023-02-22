@@ -1,4 +1,6 @@
 FROM ghcr.io/d1m0k/rocky_asterisk/system:main
+RUN yum install -y unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel mariadb-connector-odbc \
+&& yum clean all
 RUN ./configure --libdir=/usr/lib64 --with-jansson-bundled=yes
 RUN make -j$(nproc) menuselect.makeopts
 RUN menuselect/menuselect \
